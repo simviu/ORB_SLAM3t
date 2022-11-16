@@ -1,4 +1,7 @@
-# ORB-SLAM3
+# ORB-SLAM3t
+
+Fork from original https://github.com/UZ-SLAMLab/ORB_SLAM3  
+Adding some study and test code.
 
 ### V1.0, December 22th, 2021
 **Authors:** Carlos Campos, Richard Elvira, Juan J. Gómez Rodríguez, [José M. M. Montiel](http://webdiis.unizar.es/~josemari/), [Juan D. Tardos](http://webdiis.unizar.es/~jdtardos/).
