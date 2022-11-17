@@ -16,7 +16,7 @@
                 "../data/EuRoC_TimeStamps/MH05.txt"
             ],
             "stopAtEntry": false,
-            "cwd": "${workspaceFolder}/rundir/",
+            "cwd": "${workspaceFolder}/test/rundir/",
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
