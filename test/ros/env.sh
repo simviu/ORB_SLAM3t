@@ -1,2 +1,2 @@
-source rosws/devel/setup.bash
+source oslam3ros/build/devel/setup.bash
 
