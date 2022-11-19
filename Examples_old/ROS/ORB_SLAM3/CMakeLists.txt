@@ -30,11 +30,11 @@ endif()
 
 LIST(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/../../../cmake_modules)
 
-find_package(OpenCV 3.0 QUIET)
+find_package(OpenCV 4.0 QUIET)
 if(NOT OpenCV_FOUND)
-   find_package(OpenCV 2.4.3 QUIET)
+   find_package(OpenCV 4.0 QUIET)
    if(NOT OpenCV_FOUND)
-      message(FATAL_ERROR "OpenCV > 2.4.3 not found.")
+      message(FATAL_ERROR "OpenCV > 4.0 not found.")
    endif()
 endif()
 
@@ -45,6 +45,7 @@ include_directories(
 ${PROJECT_SOURCE_DIR}
 ${PROJECT_SOURCE_DIR}/../../../
 ${PROJECT_SOURCE_DIR}/../../../include
+${PROJECT_SOURCE_DIR}/../../../Thirdparty/Sophus
 ${PROJECT_SOURCE_DIR}/../../../include/CameraModels
 ${Pangolin_INCLUDE_DIRS}
 )
@@ -69,15 +70,15 @@ ${LIBS}
 )
 
 # Node for monocular camera (Augmented Reality Demo)
-rosbuild_add_executable(MonoAR
-src/AR/ros_mono_ar.cc
-src/AR/ViewerAR.h
-src/AR/ViewerAR.cc
-)
+#rosbuild_add_executable(MonoAR
+#src/AR/ros_mono_ar.cc
+#src/AR/ViewerAR.h
+#src/AR/ViewerAR.cc
+#)
 
-target_link_libraries(MonoAR
-${LIBS}
-)
+#target_link_libraries(MonoAR
+#${LIBS}
+#)
 
 # Node for stereo camera
 rosbuild_add_executable(Stereo
