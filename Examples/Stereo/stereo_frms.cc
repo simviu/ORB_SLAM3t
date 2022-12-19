@@ -83,8 +83,8 @@ int main(int argc, char **argv)
     // Stop all threads
     SLAM.Shutdown();
 
-    SLAM.SaveTrajectoryEuRoC("CameraTrajectory.txt");
-    SLAM.SaveKeyFrameTrajectoryEuRoC("KeyFrameTrajectory.txt");
+    SLAM.SaveTrajectoryEuRoC("frms/cam_pose.txt");
+    SLAM.SaveKeyFrameTrajectoryEuRoC("frms/keyfrms.txt");
 
 
     return 0;
