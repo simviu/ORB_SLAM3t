@@ -96,3 +96,10 @@ my_settings.txt
 borrar/*
 
 */ExecMean.txt
+Examples/Stereo/.DS_Store
+Examples_old/.DS_Store
+test/.DS_Store
+Thirdparty/.DS_Store
+Thirdparty/DBoW2/.DS_Store
+Thirdparty/g2o/.DS_Store
+Thirdparty/Sophus/.DS_Store
