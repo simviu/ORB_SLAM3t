@@ -34,10 +34,10 @@ LIST(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake_modules)
 # For Mac :
 #   E.g.:
 # export OPENSSL_ROOT_DIR=\
-#     /usr/local/Cellar/openssl@3/3.0.8
+#     /usr/local/Cellar/openssl@1.1/1.1.0t
 find_package(OpenSSL REQUIRED)
 
-find_package(BOOST REQUIRED)
+find_package(BOOST REQUIRED COMPONENTS serialization)
 
 find_package(OpenCV 4.4)
    if(NOT OpenCV_FOUND)
@@ -146,6 +146,7 @@ ${Pangolin_LIBRARIES}
 ${PROJECT_SOURCE_DIR}/Thirdparty/DBoW2/lib/libDBoW2.${DYEXT}
 ${PROJECT_SOURCE_DIR}/Thirdparty/g2o/lib/libg2o.${DYEXT}
 -lboost_serialization
+${Boost_SERIALIZATION_LIBRARY}
 #-lcrypto
 ${OPENSSL_CRYPTO_LIBRARY}
 )
