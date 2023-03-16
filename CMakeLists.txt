@@ -37,8 +37,12 @@ LIST(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake_modules)
 #     /usr/local/Cellar/openssl@1.1/1.1.0t
 find_package(OpenSSL REQUIRED)
 
-find_package(BOOST REQUIRED COMPONENTS serialization)
+#----
+find_package(Boost REQUIRED COMPONENTS serialization)
+message(STATUS "Boost_LIBRARY_DIRS=${Boost_LIBRARY_DIRS}")
 
+
+#----
 find_package(OpenCV 4.4)
    if(NOT OpenCV_FOUND)
       message(FATAL_ERROR "OpenCV > 4.4 not found.")
@@ -52,6 +56,7 @@ find_package(Pangolin REQUIRED)
 find_package(realsense2)
 
 include_directories(
+/usr/local/include
 ${PROJECT_SOURCE_DIR}
 ${PROJECT_SOURCE_DIR}/include
 ${PROJECT_SOURCE_DIR}/include/CameraModels
