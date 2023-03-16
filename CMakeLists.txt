@@ -30,6 +30,15 @@ endif()
 
 LIST(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake_modules)
 
+#---
+# For Mac :
+#   E.g.:
+# export OPENSSL_ROOT_DIR=\
+#     /usr/local/Cellar/openssl@3/3.0.8
+find_package(OpenSSL REQUIRED)
+
+find_package(BOOST REQUIRED)
+
 find_package(OpenCV 4.4)
    if(NOT OpenCV_FOUND)
       message(FATAL_ERROR "OpenCV > 4.4 not found.")
@@ -49,7 +58,15 @@ ${PROJECT_SOURCE_DIR}/include/CameraModels
 ${PROJECT_SOURCE_DIR}/Thirdparty/Sophus
 ${EIGEN3_INCLUDE_DIR}
 ${Pangolin_INCLUDE_DIRS}
+${OPENSSL_INCLUDE_DIR}
 )
+#----
+message(STATUS "Boost_LIBRARY_DIRS=${Boost_LIBRARY_DIRS}")
+link_directories(
+   ${OPENSSL_LIBRARY_DIR}
+   ${Boost_LIBRARY_DIRS}
+   /usr/local/lib
+   )
 
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib)
 
@@ -115,14 +132,22 @@ include/Settings.h)
 
 add_subdirectory(Thirdparty/g2o)
 
+#--- Mac hack
+SET(DYEXT so)
+if(APPLE)
+   SET(DYEXT dylib)
+endif()
+
+#---
 target_link_libraries(${PROJECT_NAME}
 ${OpenCV_LIBS}
 ${EIGEN3_LIBS}
 ${Pangolin_LIBRARIES}
-${PROJECT_SOURCE_DIR}/Thirdparty/DBoW2/lib/libDBoW2.so
-${PROJECT_SOURCE_DIR}/Thirdparty/g2o/lib/libg2o.so
+${PROJECT_SOURCE_DIR}/Thirdparty/DBoW2/lib/libDBoW2.${DYEXT}
+${PROJECT_SOURCE_DIR}/Thirdparty/g2o/lib/libg2o.${DYEXT}
 -lboost_serialization
--lcrypto
+#-lcrypto
+${OPENSSL_CRYPTO_LIBRARY}
 )
 
 # If RealSense SDK is found the library is added and its examples compiled
